@@ -1,0 +1,20 @@
+extends layout
+
+
+block content
+  h1= title
+
+  form(method='POST' action='create', style='display:flex; flex-direction:column; gap:6px;')
+    label.form-label Title
+    input(name='book_title').form-control
+    label.form-label Author
+    input(name='book_author').form-control
+    label.form-label Summary
+    textarea(name='book_summary').form-control
+    label.form-label ISBN
+    input(name='book_isbn').form-control
+    each genre in genre_list
+      div.form-check
+        input(type='checkbox' name='book_genres' value=genre.name).form-check-input
+        label.form-check-label #{genre.name}
+    button(type='submit').btn.btn-primary Create
